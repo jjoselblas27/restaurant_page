@@ -2,19 +2,15 @@ const express = require('express');
 var app = express();
 
 const mysql = require('mysql');
+var cors = require('cors');
 
-
-app.get('/a',say_a);
-
-function say_a(req,res){
-    res.send("a");
-}
+app.use(cors());
 
 app.get('/menu', mostrar_menus);
 
 
 function mostrar_menus(req, res){
-    //defino la conexion con la base de datos
+
     var connection = mysql.createConnection({
         host: 'localhost',
         user: 'utec',
@@ -22,7 +18,6 @@ function mostrar_menus(req, res){
         database: 'restaurant'
     });
 
-    //establesco la conexion
     connection.connect();
 
     var myQuery = "SELECT nombre, precio, created_date, modified_date"+
@@ -35,8 +30,6 @@ function mostrar_menus(req, res){
     });
 }
 
-//SELECT  nombre, precio, created_date, modified_date
-//FROM menu;
 
 app.listen(3000, function(){
     console.log("puerto 3000 abierto")
