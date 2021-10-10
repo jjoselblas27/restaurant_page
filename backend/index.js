@@ -2,15 +2,18 @@ const express = require('express');
 var app = express();
 
 const mysql = require('mysql');
-var cors = require('cors');
 
+var cors = require('cors');
 app.use(cors());
+
+app.get('/saludos',function(){
+    console.log("hola!")
+});
+
 
 app.get('/menu', mostrar_menus);
 
-
 function mostrar_menus(req, res){
-
     var connection = mysql.createConnection({
         host: 'localhost',
         user: 'utec',

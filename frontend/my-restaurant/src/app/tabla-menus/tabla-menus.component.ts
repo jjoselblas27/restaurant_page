@@ -9,14 +9,9 @@ import { MemberService } from '../_services/member.service';
 export class TablaMenusComponent implements OnInit { 
   elements = [
     {
-      nombre: "ramen",
-      precio: "15"
+      nombre: "",
+      precio: ""
       
-    },
-    {
-      name: "ceviche",
-      precio: "7"
-    
     }
   ]
 
